@@ -1,14 +1,18 @@
 const textField = document.getElementById('input-field')
-const startBtn = document.getElementById('start').addEventListener('click', function () {
-    let count = 3;
-    const countDiv = document.getElementById('count-div')
+const countDiv = document.getElementById('count-div')
+let count = 3;
+const display = (id, value) => {
+    const timevalue = setInterval(() => {
+        document.getElementById(id).innerText = `${value}`;
+        if (value === 0) {
+            clearInterval(timevalue)
+            textField.removeAttribute('disabled')
+            countDiv.classList.add('hidden');
+        }
+        value--
+    }, 1000)
+}
+document.getElementById('start').addEventListener('click', function () {
     countDiv.classList.remove('hidden');
-    if (count === 0) {
-        textField.removeAttribute('disabled')
-        countDiv.classList.add('hidden');
-    }
     display('countDown', count)
 })
-const display = (id, value) => {
-    const element = document.getElementById(id).innerText = `${value}`;
-}
