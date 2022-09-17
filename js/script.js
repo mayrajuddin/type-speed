@@ -1,9 +1,14 @@
 const textField = document.getElementById('input-field')
 const countDiv = document.getElementById('count-div')
+let seconds = document.getElementById('second')
+
+let snd = 0;
+displayText(seconds, snd)
 let count = 3;
 const display = (id, value) => {
+    let idDiv = document.getElementById(id)
     const timevalue = setInterval(() => {
-        document.getElementById(id).innerText = `${value}`;
+        idDiv.innerText = `${value}`;
         if (value === 0) {
             clearInterval(timevalue)
             textField.removeAttribute('disabled')
